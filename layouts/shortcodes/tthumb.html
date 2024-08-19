@@ -1,0 +1,33 @@
+{{/* layouts/shortcodes/tthumb.html */}}
+{{ $src := .Get "src" }}
+{{ $width := .Get "width" }}
+{{ $height := .Get "height" }}
+{{ $title := .Get "title" }}
+
+{{ $original := .Page.Resources.GetMatch $src }}
+{{ if not $original }}
+  {{ errorf "Image %s not found" $src }}
+{{ end }}
+
+{{ $resized := $original }}
+{{ if and $width $height }}
+  {{ $resized = $original.Resize (printf "%sx%s" $width $height) }}
+{{ else if $width }}
+  {{ $resized = $original.Resize (printf "%sx" $width) }}
+{{ else if $height }}
+  {{ $resized = $original.Resize (printf "x%s" $height) }}
+{{ else }}
+  {{ $resized = $original.Resize "320x240" }}
+{{ end }}
+<figure>
+  <a href="{{ $original.RelPermalink }}" target="_blank">
+    <img src="{{ $resized.RelPermalink }}" 
+         width="{{ $resized.Width }}" 
+         height="{{ $resized.Height }}" 
+         alt="{{ $title | default $src }}"
+         loading="lazy">
+  </a>
+  {{ with $title }}
+    <figcaption>{{ . }}</figcaption>
+  {{ end }}
+</figure>
