@@ -1,7 +1,7 @@
 ---
 title: JI1HSV FC-1 Transceiver
 description: Rick Swanton JH1HSV
-date: 2017-03
+date: 2017-03-17
 ---
 
 
