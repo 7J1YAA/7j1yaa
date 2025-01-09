@@ -8,7 +8,7 @@ date: Tue Dec 22 18:02:07 JST 1998
 On Sunday afternoon, December 13th, many Tokyo International
 Amateur Radio Association (TIARA) members met at the Fest Brau
 large beer hall of
-Yebisu Garden Place](https://gardenplace.jp/)
+[Yebisu Garden Place](https://gardenplace.jp/)
 for our annual Christmas Party.  Otsuka-san, JF1NIW, brought along his
 Fujifilm MX-700 digital camera to capture some of the happenings.
 
@@ -25,7 +25,7 @@ We even had a visit from TIARA's own Santa, George Burill, 7J1AKH.
 {{< gallery match="photo*" sort="asc" loadJQuery=true >}}
 
 Click on any picture for the full size version.
-Thanks to Fumi Otsuka, JF1NIW, for providing the pictures.
+Thanks to Fumi Otsuka, JF1NIW, for providing the photos.
 
 Date
 : 13 December 1998
@@ -34,11 +34,9 @@ Venue
 : Yebisu Garden Place, Fest Brau Beer Hall
 
 Guests
-: [JARL](http://www.jarl.or.jp/): Mr. Hara and Mr. Fujioka
-: Mobile Ham: Mr. Kioki
+: **[JARL](http://www.jarl.or.jp/):** Mr. Hara and Mr. Fujioka<br>**Mobile Ham:** Mr. Kioki
 
 **TIARA**
-
 |                       |                      |
 |-----------------------|----------------------|
 | 7J1AKH George Burrill | JF1SWH Ken Tamrua    |
