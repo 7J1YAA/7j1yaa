@@ -3,6 +3,7 @@ languageCode: en-us
 title: TIARA
 subtitle: TIARA - Tokyo International Amateur Radio Association
 disablePathToLower: true
+theme: github.com/adityatelange/hugo-PaperMod
 module:
   imports:
   - path: github.com/adityatelange/hugo-PaperMod
@@ -12,7 +13,12 @@ disableKinds:
   - RSS
   - "404"
 enableRobotsTXT: true
-copyright: Copyright © 2024 TIARA.  Available under the [Creative Commons Attribution License](https://creativecommons.org/licenses/by/4.0/).
+copyright: Copyright 2025 TIARA.  Available under the [Creative Commons Attribution License](https://creativecommons.org/licenses/by/4.0/).
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 
 params:
   description: Tokyo International Amateur Radio Association
@@ -28,6 +34,8 @@ params:
     text: " "
     icon: /7j1yaa/a/tiara-64x64.png
     iconHeight: 64
+  disableThemeToggle: true
+  DateFormat: "2006-01-02"
 
 menu:
   main:

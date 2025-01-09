@@ -1,0 +1,11 @@
+.frontlogo {
+    display: block;
+    margin: 0 auto 2rem auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.frontheader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
