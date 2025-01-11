@@ -1,9 +1,10 @@
 {{ define "main" }}
     <header class="frontheader">
-        <img src="{{ "/7j1yaa/a/tiara-420x256.png" | absURL }}" alt="TIARA Logo" class="frontlogo">
+        <img src="{{ "/7j1yaa/a/tiara-420x256.png" }}" alt="TIARA Logo" class="frontlogo">
         <h1>Tokyo International Amateur Radio Association</h1>
     </header>
     <main class="main">
         {{ .Content }}
+      <h6 style="margin-top: 1rem;">Last updated: {{ .Date.Format "2006-01-02" }}</h6>
     </main>
 {{ end }}

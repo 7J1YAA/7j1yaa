@@ -2,12 +2,18 @@
     --main-width: 800px;
 }
 
-a {
-    text-decoration: underline;
+h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 }
 
-nav a {
-    text-decoration: none;
+h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#menu a:hover span {
+    border-bottom: 2px solid;
 }
 
 .frontlogo {
