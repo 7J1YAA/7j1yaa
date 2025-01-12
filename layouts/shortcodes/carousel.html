@@ -1,0 +1,93 @@
+{{ $csvFilename := .Get "csv" | default "carousel-images.csv" }}
+{{ $csv := resources.Get $csvFilename }}
+{{ $rows := $csv | transform.Unmarshal (dict "delimiter" ";") }}
+{{ $shuffledRows := shuffle $rows }}
+
+{{ $css := resources.Get "shortcodes/carousel/carousel.css" | resources.Minify | resources.Fingerprint }}
+{{ $js := resources.Get "shortcodes/carousel/carousel.js" | resources.Minify | resources.Fingerprint }}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+
+<div class="carousel-container">
+  <div class="carousel">
+    {{ range $index, $item := $shuffledRows }}
+      {{ if not (hasPrefix (index $item 0) "#") }}
+        {{ $imagePath := index $item 0 | strings.TrimSpace }}
+        {{ $caption := index $item 1 | strings.TrimSpace }}
+        
+        {{ $imageResource := false }}
+        {{ $processedImage := false }}
+        
+        {{ if hasPrefix $imagePath "/tiara/" }}
+          {{ $cleanPath := strings.TrimPrefix "/tiara/" $imagePath }}
+          {{ $dirPath := path.Dir $cleanPath }}
+          {{ $fileName := path.Base $cleanPath | strings.TrimSpace }}
+          
+          {{ with $.Site.GetPage "section" "tiara" }}
+            {{ with .GetPage $dirPath }}
+              {{ range .Resources }}
+                {{ if eq .Name $fileName }}
+                  {{ $imageResource = . }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+            
+          {{ if $imageResource }}
+            {{ $processedImage = $imageResource.Fit "640x480" }}
+            
+            <div class="carousel-slide{{ if eq $index 0 }} active no-js-active{{ end }}">
+              <div class="carousel-image-wrapper">
+                <img 
+                  {{ if eq $index 0 }}src{{ else }}data-src{{ end }}="{{ $processedImage.RelPermalink }}" 
+                  width="{{ $processedImage.Width }}"
+                  height="{{ $processedImage.Height }}"
+                  alt="{{ $caption }}"
+                  class="lazy"
+                >
+              </div>
+              <div class="carousel-caption">{{ $caption }}</div>
+            </div>
+          {{ else }}
+            <script>
+            console.log('Image not found:', {
+              caption: '{{ $caption }}',
+              imagePath: '{{ $imagePath }}',
+              dirPath: '{{ $dirPath }}',
+              fileName: '{{ $fileName }}'
+            });
+            </script>
+            <!-- Debug info for missing images -->
+            <div class="carousel-debug" style="display: none;">
+              Image not found: {{ $imagePath }}
+              Looking in:
+              Path: {{ $dirPath }}
+              File: {{ $fileName }}
+              {{ with $.Site.GetPage "section" "tiara" }}
+                Section found: {{ .Path }}
+                {{ with .GetPage $dirPath }}
+                  Page found: {{ .Path }}
+                  Resources:
+                  {{ range .Resources }}
+                    - Name: "{{ .Name }}" (len: {{ len .Name }})
+                    - Looking for: "{{ $fileName }}" (len: {{ len $fileName }})
+                    - Exact match: {{ eq .Name $fileName }}
+                    - RelPermalink: {{ .RelPermalink }}
+                  {{ end }}
+                {{ else }}
+                  Subpage not found: {{ $dirPath }}
+                {{ end }}
+              {{ else }}
+                Section not found
+              {{ end }}
+            </div>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+  
+  <button class="carousel-btn prev">←</button>
+  <button class="carousel-btn next">→</button>
+</div>
