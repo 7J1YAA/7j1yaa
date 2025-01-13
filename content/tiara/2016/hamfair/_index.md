@@ -6,6 +6,6 @@ description: TIARA is an international amateur radio club in Tokyo, Japan.
 
 {{< gallery match="Ham*" sortOrder="asc" showExif=true loadJQuery=true >}}
 
-Photos thanks to Dan Domondon 7J1ABD/WA6URY
+Photos thanks to {{< qrz call="7J1ABD/WA6URY" >}} Dan Domondon {{< /qrz >}}
 
 

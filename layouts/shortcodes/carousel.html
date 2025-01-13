@@ -5,9 +5,13 @@
 
 {{ $css := resources.Get "shortcodes/carousel/carousel.css" | resources.Minify | resources.Fingerprint }}
 {{ $js := resources.Get "shortcodes/carousel/carousel.js" | resources.Minify | resources.Fingerprint }}
+{{ $lightboxCss := resources.Get "shortcodes/carousel/lightbox.css" | resources.Minify | resources.Fingerprint }}
+{{ $lightboxJs := resources.Get "shortcodes/carousel/lightbox.js" | resources.Minify | resources.Fingerprint }}
 
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $lightboxCss.RelPermalink }}" integrity="{{ $lightboxCss.Data.Integrity }}">
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+<script src="{{ $lightboxJs.RelPermalink }}" integrity="{{ $lightboxJs.Data.Integrity }}" defer></script>
 
 <div class="carousel-container">
   <div class="carousel">
@@ -35,12 +39,13 @@
           {{ end }}
             
           {{ if $imageResource }}
-            {{ $processedImage = $imageResource.Fit "640x480" }}
+            {{ $processedImage = $imageResource.Fit "640x480 webp" }}
             
             <div class="carousel-slide{{ if eq $index 0 }} active no-js-active{{ end }}">
               <div class="carousel-image-wrapper">
                 <img 
                   {{ if eq $index 0 }}src{{ else }}data-src{{ end }}="{{ $processedImage.RelPermalink }}" 
+                  data-original="{{ $imageResource.RelPermalink }}"
                   width="{{ $processedImage.Width }}"
                   height="{{ $processedImage.Height }}"
                   alt="{{ $caption }}"
