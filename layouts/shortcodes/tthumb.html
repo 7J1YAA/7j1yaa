@@ -6,6 +6,21 @@
 
 {{ $original := .Page.Resources.GetMatch $src }}
 {{ if not $original }}
+  {{ if hasPrefix $src "../" }}
+    {{ $path := strings.TrimPrefix "../" $src }}
+    {{ with .Site.GetPage (path.Dir $path) }}
+      {{ $filename := path.Base $path }}
+      {{ $original = .Resources.GetMatch $filename }}
+    {{ end }}
+  {{ else if hasPrefix $src "/" }}
+    {{ with .Site.GetPage (path.Dir $src) }}
+      {{ $filename := path.Base $src }}
+      {{ $original = .Resources.GetMatch $filename }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if not $original }}
   {{ errorf "Image %s not found" $src }}
 {{ end }}
 
