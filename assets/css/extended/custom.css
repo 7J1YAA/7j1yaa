@@ -27,3 +27,17 @@ h3 {
     text-align: center;
     margin-bottom: 3rem;
 }
+
+/* General alert styling */
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-primary {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
