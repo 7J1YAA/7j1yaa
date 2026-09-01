@@ -1,4 +1,6 @@
 github.com/adityatelange/hugo-PaperMod v0.0.0-20260410194614-893811ac431f h1:7hI1eNWE3Ng2lEYeLO00d7FficPn1Pf/7G6jAc7aS2E=
 github.com/adityatelange/hugo-PaperMod v0.0.0-20260410194614-893811ac431f/go.mod h1:HCHxNMKYdGafUYjVV3ICiAqznZK2yH0iI53jqcDFDdQ=
+github.com/adityatelange/hugo-PaperMod v0.0.0-20260802175912-d3768854d00a h1:Bkfmfl/zjay3M8OOMx7tALMHDYc9jRwj5rUKN4OzOPc=
+github.com/adityatelange/hugo-PaperMod v0.0.0-20260802175912-d3768854d00a/go.mod h1:sp5WH671pzcVNpWKveBQKlBfu6T9uvcBI/4B3BSojKw=
 github.com/mfg92/hugo-shortcode-gallery v1.4.0 h1:QS6L448HSnMSJwnH4HY+euTemuK1Dsq6lfYIRU8cLV4=
 github.com/mfg92/hugo-shortcode-gallery v1.4.0/go.mod h1:SEdbeBGSMX2lP+4nCqqy9AyTWWktUMWXYnR3r1l01Rw=
